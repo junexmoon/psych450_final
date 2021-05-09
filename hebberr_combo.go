@@ -1286,7 +1286,7 @@ func (ss *Sim) ConfigGui() *gi.Window {
 
 	tbar.AddAction(gi.ActOpts{Label: "README", Icon: "file-markdown", Tooltip: "Opens your browser on the README file that contains instructions for how to run this model."}, win.This(),
 		func(recv, send ki.Ki, sig int64, data interface{}) {
-			gi.OpenURL("https://github.com/CompCogNeuro/sims/blob/master/ch4/hebberr_combo/README.md")
+			gi.OpenURL("https://github.com/junexmoon/psych450_final/blob/master/README.md")
 		})
 
 	vp.UpdateEndNoSig(updt)
