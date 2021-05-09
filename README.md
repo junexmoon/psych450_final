@@ -11,7 +11,7 @@ Network Overview
 
 For my network, I proposed a convolutional neural network capable of classifying a patient’s cell as benign (noncancerous) or malignant (cancerous) given that cell nucleus’s attributes. In real life application, a pathologist could record quantitative measurements about attributes of a cell nucleus as they would in a standard biopsy, but apply the convolution neural network so that from the data, it could make a prediction about whether or not the cell was malignant. Because the model has to classify cells as being either malignant or benign, the network would be a binary classification model because there are only two classifications for the output.
 
-[Figure 1. Model showing Malignant (left column) or Benign (right column) output](img/fig1.png)
+![Figure 1. Model showing Malignant (left column) or Benign (right column) output](img/fig1.png)
 Figure 1 shows how by looking at the NetView in the simulation, the model would indicate a malignant diagnosis via activation in the first column. While the model would ideally learn to predict a diagnosis with a high degree of accuracy, I imagine that the neural network would be supplemented with a pathologist’s own analysis and subsequent diagnosis, but that the prediction would be utilized in part to expedite the whole diagnostic process.
 
 Dataset 
@@ -28,19 +28,23 @@ Process and Method
 
 For my model, I began by using the hebber_combo sim as the model, adapting its default parameters but changing the network configurations by changing the hidden layer nodes. I started off by creating a 2x8 hidden layer.
 
-[Figure 2. TrnEpcPlot and TrnEpcPlot for initial model](img/fig2log.png) (img/fig2plot.png)
+![Figure 2. TrnEpcPlot and TrnEpcPlot for initial model](img/fig2log.png)
+![](img/fig2plot.png)
 According to Figure 2, my network started at a PctCor rate of less than half, but hovered at around the 50% mark for the entire training run. This indicated that the network wasn’t learning, but instead making guesses. I began adjusting the network by trying variations of the number of hidden layer nodes, until deciding upon a 10x30 hidden layer structure. While this created for some slight improvement, the change was not drastic enough so I began adjusting some parameters. I began by changing the learning factors, testing each one and then combinations by turning them on or off. After changing the learning factors so that norm, momentum, and wtbal were all applied, my network saw a drastic change.
 
 
-[Figure 3. TrnEpcPlot and TrnEpcPlot after applying 10x30 hidden layer](img/fig3log.png) (img/fig3plot.png)
+![Figure 3. TrnEpcPlot and TrnEpcPlot after applying 10x30 hidden layer](img/fig3log.png)
+![](img/fig3plot.png)
 As seen in Figure 3, turning on these learning factors made it so that my network was showing evident signs of learning, moving up to a maximum 74% correct rate during a training run. I tried adjusting some other parameters, such as the average activation levels or learning strength factors. Making changes to these parameters resulted in either worse or similar rates of correctness, with what seemed to be a ceiling at the 74% mark. Later, I began tweaking inhibition levels as well to see if there would be any effect. I lowered it slightly and saw that this 74% “ceiling” had been broken, moving it up slightly. I lowered it quite drastically until it reached a maximum 76% correct rate.
 
 
-[Figure 4. TrnEpcPlot and TrnEpcPlot after lowering inhibition](img/fig4log.png) (img/fig4plot.png)
+![Figure 4. TrnEpcPlot and TrnEpcPlot after lowering inhibition](img/fig4log.png)
+![](img/fig4plot.png)
 After achieving this 76% correct rate in Figure 4, I hit another “ceiling”, unable to move past this 76% maximum correct rate. Even after adjusting all the parameters and even trying to add some, such an excitation, there did not seem to be a difference. I tried going back to my network configurations to try and attempt a change in the nodes but again, 10x30 seemed to be the most optimal. I then tried a 4D hidden layer to see if there would be an effect. I attempted a few variations of nodes, and settled upon a 2x4x5x6 hidden layer after breaking this second ceiling, and reaching a 77% maximum correct rate.
 
 
-[Figure 5. TrnEpcPlot and TrnEpcPlot after changing 2D hidden layer into 4D hidden layer](img/fig5log.png) (img/fig5plot.png)
+![Figure 5. TrnEpcPlot and TrnEpcPlot after changing 2D hidden layer into 4D hidden layer](img/fig5log.png)
+![](img/fig5plot.png)
 After attempting to adjust the parameters with this 4D layer and even trying to add another hidden layer (and trying variations of combining multiple 2D or 4D hidden layers), I found that I could not achieve a correct rate higher than this 77%. Overall, the general trend of learning also remained fairly consistent no matter how much I adjusted the parameters or slightly reconfigured the network with the limited sections of code I knew how to change, which makes me believe that while these slight changes could result in some learning improvements, the network may need some larger structural changes in order to break this general correctness rate ceiling. However, because of my limited programming experience, I thought this to be slightly outside the scope of this project. 
 
 **Discussion**
